@@ -2,4 +2,4 @@
 
 ## Process
 
-- Commiter et pousser directement sur main.
+- Pousser sur une branche `claude/` et créer une Pull Request vers main.
