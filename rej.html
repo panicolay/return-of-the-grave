@@ -4,8 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rej</title>
+    <style>
+        .song {
+            display: flex;
+            gap: 4px;
+        }
+        .instrument {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+        .instrument-name {
+            font-family: monospace;
+            font-size: 12px;
+            padding: 4px;
+        }
+        .patterns {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .pattern {
+            width: 80px;
+            background: #ccc;
+        }
+        .silence {
+            width: 80px;
+        }
+    </style>
 </head>
 <body>
     <h1>Rej</h1>
+    <div id="song"></div>
+
+    <script>
+        const data = {
+            title: "Rej",
+            instruments: [
+                {
+                    name: "Kick",
+                    patterns: [
+                        { start: 0, duration: 4, repeat: 4 }
+                    ]
+                },
+                {
+                    name: "Clap",
+                    patterns: [
+                        { start: 4, duration: 4, repeat: 2 },
+                        { start: 14, duration: 2, repeat: 1 }
+                    ]
+                },
+                {
+                    name: "Hi-Hat",
+                    patterns: [
+                        { start: 0, duration: 2, repeat: 8 }
+                    ]
+                },
+                {
+                    name: "Synth",
+                    patterns: [
+                        { start: 8, duration: 1.5, repeat: 4 }
+                    ]
+                }
+            ]
+        };
+
+        const PX_PER_UNIT = 30;
+
+        function render(data) {
+            const container = document.getElementById("song");
+            const songDiv = document.createElement("div");
+            songDiv.className = "song";
+
+            for (const instrument of data.instruments) {
+                const col = document.createElement("div");
+                col.className = "instrument";
+
+                const name = document.createElement("div");
+                name.className = "instrument-name";
+                name.textContent = instrument.name;
+                col.appendChild(name);
+
+                const patternsDiv = document.createElement("div");
+                patternsDiv.className = "patterns";
+
+                // Build a timeline of events sorted by position
+                const events = [];
+                for (const p of instrument.patterns) {
+                    for (let i = 0; i < p.repeat; i++) {
+                        events.push({
+                            start: p.start + i * p.duration,
+                            duration: p.duration
+                        });
+                    }
+                }
+                events.sort((a, b) => a.start - b.start);
+
+                let cursor = 0;
+                for (const e of events) {
+                    // Add silence if there's a gap
+                    if (e.start > cursor) {
+                        const silence = document.createElement("div");
+                        silence.className = "silence";
+                        silence.style.height = (e.start - cursor) * PX_PER_UNIT + "px";
+                        patternsDiv.appendChild(silence);
+                    }
+                    // Add pattern block
+                    const block = document.createElement("div");
+                    block.className = "pattern";
+                    block.style.height = e.duration * PX_PER_UNIT + "px";
+                    patternsDiv.appendChild(block);
+                    cursor = e.start + e.duration;
+                }
+
+                col.appendChild(patternsDiv);
+                songDiv.appendChild(col);
+            }
+
+            container.appendChild(songDiv);
+        }
+
+        render(data);
+    </script>
 </body>
 </html>
