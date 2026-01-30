@@ -15,3 +15,23 @@
 ## Ajouter un morceau
 
 Créer un fichier JSON dans `data/`. Le build et l'accueil s'occupent du reste.
+
+## Structure d'un JSON de morceau
+
+```json
+{
+    "title": "Nom du morceau",
+    "instruments": [
+        {
+            "name": "Kick",
+            "patterns": [
+                { "start": 0, "duration": 4, "repeat": 2 }
+            ]
+        }
+    ]
+}
+```
+
+- `start` : position de début (en mesures)
+- `duration` : durée du pattern (en mesures, décimales ok : `1.5`)
+- `repeat` : nombre de répétitions
