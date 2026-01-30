@@ -65,7 +65,7 @@
         { "id": "B", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 2 },
+        { "patternId": "cutted I", "start": 0, "repeat": 2 },
         { "patternId": "B", "start": 2, "repeat": 9 }
       ]
     }
