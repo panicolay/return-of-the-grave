@@ -1,0 +1,73 @@
+{
+  "title": "Never Grow Old - Mixed",
+  "artist": "Floorplan",
+  "project": "Just Want Another Chance",
+  "length": "2:56",
+  "instruments": [
+    {
+      "name": "kick",
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 0, "repeat": 13 }
+      ]
+    },
+    {
+      "name": "hihat",
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 0, "repeat": 11 }
+      ]
+    },
+    {
+      "name": "clap",
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 0, "repeat": 11 }
+      ]
+    },
+    {
+      "name": "snare",
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 10, "repeat": 1 }
+      ]
+    },
+    {
+      "name": "bass",
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 0, "repeat": 11 }
+      ]
+    },
+    {
+      "name": "stab",
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 0, "repeat": 11 }
+      ]
+    },
+    {
+      "name": "voice",
+      "patternDefinitions": [
+        { "id": "cutted I", "duration": 1 },
+        { "id": "B", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 0, "repeat": 2 },
+        { "patternId": "B", "start": 2, "repeat": 9 }
+      ]
+    }
+  ]
+}
