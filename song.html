@@ -75,7 +75,8 @@
                             duration: p.duration,
                             originalStart: p.start,
                             originalDuration: p.duration,
-                            originalRepeat: p.repeat
+                            originalRepeat: p.repeat,
+                            originalComment: p.comment || ""
                         });
                     }
                 }
@@ -107,6 +108,7 @@
                     block.dataset.start = e.originalStart;
                     block.dataset.duration = e.originalDuration;
                     block.dataset.repeat = e.originalRepeat;
+                    block.dataset.comment = e.originalComment;
 
                     patternsDiv.appendChild(block);
                     cursor = e.start + e.duration;
@@ -130,12 +132,19 @@
                 const start = pattern.dataset.start;
                 const duration = pattern.dataset.duration;
                 const repeat = pattern.dataset.repeat;
+                const comment = pattern.dataset.comment;
 
-                popover.innerHTML = `
+                let html = `
                     <div>Start: ${start}</div>
                     <div>Duration: ${duration}</div>
                     <div>Repeat: ${repeat}</div>
                 `;
+
+                if (comment) {
+                    html += `<div>Comment: ${comment}</div>`;
+                }
+
+                popover.innerHTML = html;
                 popover.style.display = "block";
 
                 if (isDesktop) {
