@@ -12,8 +12,6 @@
     <div id="song"></div>
 
     <script>
-        const PX_PER_UNIT = 30;
-
         const songId = new URLSearchParams(window.location.search).get("song");
         if (!songId) {
             document.getElementById("title").textContent = "Aucun morceau sélectionné";
@@ -28,7 +26,21 @@
         }
 
         function render(data) {
-            const container = document.getElementById("song");
+            // Find total duration across all instruments
+            let totalDuration = 0;
+            for (const instrument of data.instruments) {
+                for (const p of instrument.patterns) {
+                    const end = p.start + p.duration * p.repeat;
+                    if (end > totalDuration) totalDuration = end;
+                }
+            }
+            if (totalDuration === 0) return;
+
+            // Available height = viewport minus header area
+            const songEl = document.getElementById("song");
+            const availableHeight = window.innerHeight - songEl.getBoundingClientRect().top - 20;
+            const pxPerUnit = availableHeight / totalDuration;
+
             const songDiv = document.createElement("div");
             songDiv.className = "song";
 
@@ -60,12 +72,12 @@
                     if (e.start > cursor) {
                         const silence = document.createElement("div");
                         silence.className = "silence";
-                        silence.style.height = (e.start - cursor) * PX_PER_UNIT + "px";
+                        silence.style.height = (e.start - cursor) * pxPerUnit + "px";
                         patternsDiv.appendChild(silence);
                     }
                     const block = document.createElement("div");
                     block.className = "pattern";
-                    block.style.height = e.duration * PX_PER_UNIT + "px";
+                    block.style.height = e.duration * pxPerUnit + "px";
                     patternsDiv.appendChild(block);
                     cursor = e.start + e.duration;
                 }
@@ -74,7 +86,7 @@
                 songDiv.appendChild(col);
             }
 
-            container.appendChild(songDiv);
+            songEl.appendChild(songDiv);
         }
     </script>
 </body>
