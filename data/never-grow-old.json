@@ -10,7 +10,7 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 22 }
+        { "patternId": "A", "start": 0, "repeat": 42 }
       ]
     },
     {
@@ -20,7 +20,7 @@
       ],
       "timeline": [
         { "patternId": "A", "start": 0, "repeat": 11 },
-        { "patternId": "A", "start": 18, "repeat": 8 }
+        { "patternId": "A", "start": 18, "repeat": 24 }
       ]
     },
     {
@@ -30,7 +30,7 @@
       ],
       "timeline": [
         { "patternId": "A", "start": 0, "repeat": 11 },
-        { "patternId": "A", "start": 18, "repeat": 8 }
+        { "patternId": "A", "start": 18, "repeat": 36 }
       ]
     },
     {
@@ -50,7 +50,7 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 22 }
+        { "patternId": "A", "start": 0, "repeat": 42 }
       ]
     },
     {
@@ -66,12 +66,15 @@
       "name": "voice",
       "patternDefinitions": [
         { "id": "cutted I", "duration": 1 },
-        { "id": "B", "duration": 1 }
+        { "id": "B", "duration": 1 },
+        { "id": "Gospel", "duration": 4 }
       ],
       "timeline": [
         { "patternId": "cutted I", "start": 0, "repeat": 2 },
         { "patternId": "B", "start": 2, "repeat": 9 },
-        { "patternId": "B", "start": 18, "repeat": 8 }
+        { "patternId": "B", "start": 18, "repeat": 20 },
+        { "patternId": "Gospel", "start": 54, "repeat": 1 },
+        { "patternId": "B", "start": 58, "repeat": 1 }
       ]
     }
   ]
