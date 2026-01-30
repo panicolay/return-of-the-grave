@@ -68,16 +68,50 @@
                 patternsDiv.className = "patterns";
 
                 const events = [];
-                for (const p of instrument.patterns) {
-                    for (let i = 0; i < p.repeat; i++) {
-                        events.push({
-                            start: p.start + i * p.duration,
-                            duration: p.duration,
-                            originalStart: p.start,
-                            originalDuration: p.duration,
-                            originalRepeat: p.repeat,
-                            originalComment: p.comment || ""
-                        });
+
+                // Check if using new format (patternDefinitions + timeline) or old format (patterns)
+                if (instrument.patternDefinitions && instrument.timeline) {
+                    // New format: build a map of pattern definitions
+                    const patternMap = {};
+                    for (const pDef of instrument.patternDefinitions) {
+                        patternMap[pDef.id] = pDef;
+                    }
+
+                    // Process timeline entries
+                    for (const tEntry of instrument.timeline) {
+                        const pDef = patternMap[tEntry.patternId];
+                        if (!pDef) continue; // Skip if pattern not found
+
+                        // Use timeline duration if provided, otherwise use pattern definition duration
+                        const duration = tEntry.duration !== undefined ? tEntry.duration : pDef.duration;
+
+                        for (let i = 0; i < tEntry.repeat; i++) {
+                            events.push({
+                                start: tEntry.start + i * duration,
+                                duration: duration,
+                                originalStart: tEntry.start,
+                                originalDuration: duration,
+                                originalRepeat: tEntry.repeat,
+                                patternId: tEntry.patternId,
+                                patternComment: pDef.comment || "",
+                                contextComment: tEntry.comment || ""
+                            });
+                        }
+                    }
+                } else if (instrument.patterns) {
+                    // Old format: maintain backwards compatibility
+                    for (const p of instrument.patterns) {
+                        for (let i = 0; i < p.repeat; i++) {
+                            events.push({
+                                start: p.start + i * p.duration,
+                                duration: p.duration,
+                                originalStart: p.start,
+                                originalDuration: p.duration,
+                                originalRepeat: p.repeat,
+                                patternComment: "",
+                                contextComment: p.comment || ""
+                            });
+                        }
                     }
                 }
                 events.sort((a, b) => a.start - b.start);
@@ -108,7 +142,9 @@
                     block.dataset.start = e.originalStart;
                     block.dataset.duration = e.originalDuration;
                     block.dataset.repeat = e.originalRepeat;
-                    block.dataset.comment = e.originalComment;
+                    block.dataset.patternId = e.patternId || "";
+                    block.dataset.patternComment = e.patternComment || "";
+                    block.dataset.contextComment = e.contextComment || "";
 
                     patternsDiv.appendChild(block);
                     cursor = e.start + e.duration;
@@ -132,16 +168,31 @@
                 const start = pattern.dataset.start;
                 const duration = pattern.dataset.duration;
                 const repeat = pattern.dataset.repeat;
-                const comment = pattern.dataset.comment;
+                const patternId = pattern.dataset.patternId;
+                const patternComment = pattern.dataset.patternComment;
+                const contextComment = pattern.dataset.contextComment;
 
-                let html = `
+                let html = '';
+
+                // Show pattern ID if available (new format)
+                if (patternId) {
+                    html += `<div>Pattern ID: ${patternId}</div>`;
+                }
+
+                html += `
                     <div>Start: ${start}</div>
                     <div>Duration: ${duration}</div>
                     <div>Repeat: ${repeat}</div>
                 `;
 
-                if (comment) {
-                    html += `<div>Comment: ${comment}</div>`;
+                // Show pattern comment if available
+                if (patternComment) {
+                    html += `<div>Pattern: ${patternComment}</div>`;
+                }
+
+                // Show context comment if available
+                if (contextComment) {
+                    html += `<div>Context: ${contextComment}</div>`;
                 }
 
                 popover.innerHTML = html;
