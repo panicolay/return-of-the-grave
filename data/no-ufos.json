@@ -6,6 +6,6 @@
             "patterns": [
                 { "start": 0, "duration": 4, "repeat":1 }
             ]
-        },
+        }
     ]
 }
