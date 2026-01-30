@@ -16,13 +16,13 @@
     {
       "name": "hihat",
       "patterns": [
-        { "start": 25, "duration": 11, "repeat": 22 }
+        { "start": 25, "duration": 1, "repeat": 22 }
       ]
     },
     {
       "name": "kick",
       "patterns": [
-        { "start": 28, "duration": 8, "repeat": 16 }
+        { "start": 28, "duration": 1, "repeat": 16 }
       ]
     }
   ]
