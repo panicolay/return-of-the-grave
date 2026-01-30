@@ -81,7 +81,7 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 78 }
+        { "patternId": "A", "start": 0, "repeat": 90 }
       ]
     },
     {
