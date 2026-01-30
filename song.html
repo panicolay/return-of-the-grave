@@ -50,8 +50,13 @@
             // Find total duration across all instruments
             let totalDuration = 0;
             for (const instrument of data.instruments) {
-                for (const p of instrument.patterns) {
-                    const end = p.start + p.duration * p.repeat;
+                for (const tEntry of instrument.timeline) {
+                    // Find pattern definition to get duration
+                    const pDef = instrument.patternDefinitions.find(p => p.id === tEntry.patternId);
+                    if (!pDef) continue;
+
+                    const duration = tEntry.duration !== undefined ? tEntry.duration : pDef.duration;
+                    const end = tEntry.start + duration * tEntry.repeat;
                     if (end > totalDuration) totalDuration = end;
                 }
             }
