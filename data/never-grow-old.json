@@ -10,7 +10,7 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 13 }
+        { "patternId": "A", "start": 0, "repeat": 22 }
       ]
     },
     {
@@ -19,7 +19,8 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 11 }
+        { "patternId": "A", "start": 0, "repeat": 11 },
+        { "patternId": "A", "start": 18, "repeat": 8 }
       ]
     },
     {
@@ -28,16 +29,19 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 11 }
+        { "patternId": "A", "start": 0, "repeat": 11 },
+        { "patternId": "A", "start": 18, "repeat": 8 }
       ]
     },
     {
       "name": "snare",
       "patternDefinitions": [
-        { "id": "A", "duration": 1 }
+        { "id": "A", "duration": 1 },
+        { "id": "B", "duration": 1 },
       ],
       "timeline": [
-        { "patternId": "A", "start": 10, "repeat": 1 }
+        { "patternId": "A", "start": 10, "repeat": 8 },
+        { "patternId": "B", "start": 18, "repeat": 8 }
       ]
     },
     {
@@ -46,7 +50,7 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 11 }
+        { "patternId": "A", "start": 0, "repeat": 22 }
       ]
     },
     {
@@ -55,7 +59,7 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 11 }
+        { "patternId": "A", "start": 0, "repeat": 22 }
       ]
     },
     {
@@ -66,7 +70,8 @@
       ],
       "timeline": [
         { "patternId": "cutted I", "start": 0, "repeat": 2 },
-        { "patternId": "B", "start": 2, "repeat": 9 }
+        { "patternId": "B", "start": 2, "repeat": 9 },
+        { "patternId": "B", "start": 18, "repeat": 8 }
       ]
     }
   ]
