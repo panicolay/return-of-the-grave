@@ -72,7 +72,8 @@
       "timeline": [
         { "patternId": "cutted I", "start": 0, "repeat": 2 },
         { "patternId": "B", "start": 2, "repeat": 9 },
-        { "patternId": "B", "start": 18, "repeat": 20 },
+        { "patternId": "B", "start": 18, "repeat": 8 },
+        { "patternId": "B", "start": 34, "repeat": 20 },
         { "patternId": "Gospel", "start": 54, "repeat": 1 },
         { "patternId": "B", "start": 58, "repeat": 1 }
       ]
