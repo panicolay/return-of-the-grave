@@ -26,7 +26,7 @@ Créer un fichier JSON dans `data/`. Le build et l'accueil s'occupent du reste.
         {
             "name": "Kick",
             "patterns": [
-                { "start": 0, "duration": 4, "repeat": 2 }
+                { "start": 0, "duration": 4, "repeat": 2, "comment": "Intro" }
             ]
         }
     ]
@@ -36,3 +36,4 @@ Créer un fichier JSON dans `data/`. Le build et l'accueil s'occupent du reste.
 - `start` : position de début (en mesures)
 - `duration` : durée du pattern (en mesures, décimales ok : `1.5`)
 - `repeat` : nombre de répétitions
+- `comment` : commentaire optionnel (affiché dans le popover au survol/tap du pattern). Pas besoin de l'inclure s'il n'y a pas de commentaire.
