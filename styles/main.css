@@ -39,6 +39,7 @@ body {
     width: 40px;
     background: #ccc;
     border-bottom: 1px solid white;
+    border-right: 1px solid white;
     box-sizing: border-box;
 }
 
@@ -92,8 +93,6 @@ body {
     .pattern {
         width: auto;
         height: 40px;
-        border-bottom: none;
-        border-right: 1px solid white;
     }
 
     .silence {
