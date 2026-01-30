@@ -12,7 +12,6 @@ body {
 
 .song {
     display: flex;
-    gap: 1px;
 }
 
 .instrument {
@@ -71,7 +70,6 @@ body {
 @media (min-width: 800px) {
     .song {
         flex-direction: column;
-        gap: 1px;
     }
 
     .instrument {
