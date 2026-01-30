@@ -1,11 +1,4 @@
 {
     "title": "No Ufo's",
-    "instruments": [
-        {
-            "name": "kick",
-            "patterns": [
-                { "start": 0, "duration": 4, "repeat":1 }
-            ]
-        }
-    ]
+    "instruments": []
 }
