@@ -3,6 +3,7 @@
 ## Process
 
 - Pousser sur une branche `claude/` et créer une Pull Request vers main.
+- **Important** : La commande `gh` (GitHub CLI) n'est pas disponible. Créer les PR manuellement via l'interface GitHub.
 
 ## Architecture
 
