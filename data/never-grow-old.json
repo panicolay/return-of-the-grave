@@ -37,7 +37,7 @@
       "name": "snare",
       "patternDefinitions": [
         { "id": "A", "duration": 1 },
-        { "id": "B", "duration": 1 },
+        { "id": "B", "duration": 1 }
       ],
       "timeline": [
         { "patternId": "A", "start": 10, "repeat": 8 },
