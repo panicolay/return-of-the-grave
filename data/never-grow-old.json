@@ -9,7 +9,8 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 42 }
+        { "patternId": "A", "start": 0, "repeat": 42 },
+        { "patternId": "A", "start": 58, "repeat": 32 }
       ]
     },
     {
@@ -19,7 +20,18 @@
       ],
       "timeline": [
         { "patternId": "A", "start": 0, "repeat": 11 },
-        { "patternId": "A", "start": 18, "repeat": 24 }
+        { "patternId": "A", "start": 18, "repeat": 24 },
+        { "patternId": "A", "start": 58, "repeat": 32 }
+      ]
+    },
+        {
+      "name": "shaker",
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 0, "repeat": 50 },
+        { "patternId": "A", "start": 58, "repeat": 32 }
       ]
     },
     {
@@ -29,7 +41,8 @@
       ],
       "timeline": [
         { "patternId": "A", "start": 0, "repeat": 11 },
-        { "patternId": "A", "start": 18, "repeat": 36 }
+        { "patternId": "A", "start": 18, "repeat": 36 },
+        { "patternId": "A", "start": 58, "repeat": 32 }
       ]
     },
     {
@@ -44,12 +57,22 @@
       ]
     },
     {
-      "name": "bass",
+      "name": "bass I",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 42 }
+        { "patternId": "A", "start": 0, "repeat": 42 },
+        { "patternId": "A", "start": 58, "repeat": 16 }
+      ]
+    },
+    {
+      "name": "bass II",
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 58, "repeat": 32 }
       ]
     },
     {
@@ -58,7 +81,16 @@
         { "id": "A", "duration": 1 }
       ],
       "timeline": [
-        { "patternId": "A", "start": 0, "repeat": 22 }
+        { "patternId": "A", "start": 0, "repeat": 78 }
+      ]
+    },
+    {
+      "name": "pluck",
+      "patternDefinitions": [
+        { "id": "A", "duration": 2 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 66, "repeat": 12 }
       ]
     },
     {
