@@ -1,28 +1,41 @@
 {
   "title": "Just Want Another Chance",
+  "artist": "Jeff Buckley",
   "instruments": [
     {
       "name": "kick",
-      "patterns": [
-        { "start": 56, "duration": 1, "repeat": 16 }
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 56, "repeat": 16 }
       ]
     },
     {
       "name": "hihat",
-      "patterns": [
-        { "start": 50, "duration": 1, "repeat": 22 }
+      "patternDefinitions": [
+        { "id": "A", "duration": 1 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 50, "repeat": 22 }
       ]
     },
     {
       "name": "bass",
-      "patterns": [
-        { "start": 0, "duration": 2, "repeat": 36 }
+      "patternDefinitions": [
+        { "id": "A", "duration": 2 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 0, "repeat": 36 }
       ]
     },
     {
       "name": "voice",
-      "patterns": [
-        { "start": 0, "duration": 72, "repeat": 1 }
+      "patternDefinitions": [
+        { "id": "A", "duration": 72 }
+      ],
+      "timeline": [
+        { "patternId": "A", "start": 0, "repeat": 1 }
       ]
     }
   ]

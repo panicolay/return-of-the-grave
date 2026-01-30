@@ -1,0 +1,35 @@
+{
+  "title": "Pattern Test (New Format)",
+  "artist": "Demo",
+  "bpm": 128,
+  "length": "3:40",
+  "instruments": [
+    {
+      "name": "Kick",
+      "patternDefinitions": [
+        { "id": "basic", "duration": 4, "comment": "Kick 4/4 basique" },
+        { "id": "fill", "duration": 1, "comment": "Fill de transition" }
+      ],
+      "timeline": [
+        { "patternId": "basic", "start": 0, "repeat": 4, "comment": "Intro" },
+        { "patternId": "fill", "start": 16, "repeat": 1, "comment": "Transition vers drop" },
+        { "patternId": "basic", "start": 17, "repeat": 8, "comment": "Drop" },
+        { "patternId": "fill", "start": 49, "repeat": 1, "duration": 0.5, "comment": "Transition écourtée" },
+        { "patternId": "basic", "start": 49.5, "repeat": 2, "comment": "Outro" }
+      ]
+    },
+    {
+      "name": "Hi-hat",
+      "patternDefinitions": [
+        { "id": "closed", "duration": 2, "comment": "Hi-hat fermé" },
+        { "id": "open", "duration": 2, "comment": "Hi-hat ouvert" }
+      ],
+      "timeline": [
+        { "patternId": "closed", "start": 8, "repeat": 4, "comment": "Intro progression" },
+        { "patternId": "open", "start": 17, "repeat": 8, "comment": "Drop principal" },
+        { "patternId": "closed", "start": 33, "repeat": 8, "comment": "Breakdown" },
+        { "patternId": "open", "start": 49, "repeat": 4, "comment": "Outro" }
+      ]
+    }
+  ]
+}

@@ -21,7 +21,27 @@
                 .then(res => res.json())
                 .then(data => {
                     document.title = data.title;
-                    document.getElementById("title").textContent = data.title;
+
+                    // Display title and metadata
+                    const titleEl = document.getElementById("title");
+                    titleEl.textContent = data.title;
+
+                    // Add metadata if available
+                    const metadata = [];
+                    if (data.artist) metadata.push(data.artist);
+                    if (data.project) metadata.push(data.project);
+                    if (data.bpm) metadata.push(`${data.bpm} BPM`);
+                    if (data.length) metadata.push(data.length);
+
+                    if (metadata.length > 0) {
+                        const metaEl = document.createElement("div");
+                        metaEl.style.fontSize = "0.8em";
+                        metaEl.style.color = "#666";
+                        metaEl.style.marginTop = "8px";
+                        metaEl.textContent = metadata.join(" • ");
+                        titleEl.parentNode.insertBefore(metaEl, titleEl.nextSibling);
+                    }
+
                     render(data);
                 });
         }
@@ -68,15 +88,31 @@
                 patternsDiv.className = "patterns";
 
                 const events = [];
-                for (const p of instrument.patterns) {
-                    for (let i = 0; i < p.repeat; i++) {
+
+                // Build a map of pattern definitions
+                const patternMap = {};
+                for (const pDef of instrument.patternDefinitions) {
+                    patternMap[pDef.id] = pDef;
+                }
+
+                // Process timeline entries
+                for (const tEntry of instrument.timeline) {
+                    const pDef = patternMap[tEntry.patternId];
+                    if (!pDef) continue; // Skip if pattern not found
+
+                    // Use timeline duration if provided, otherwise use pattern definition duration
+                    const duration = tEntry.duration !== undefined ? tEntry.duration : pDef.duration;
+
+                    for (let i = 0; i < tEntry.repeat; i++) {
                         events.push({
-                            start: p.start + i * p.duration,
-                            duration: p.duration,
-                            originalStart: p.start,
-                            originalDuration: p.duration,
-                            originalRepeat: p.repeat,
-                            originalComment: p.comment || ""
+                            start: tEntry.start + i * duration,
+                            duration: duration,
+                            originalStart: tEntry.start,
+                            originalDuration: duration,
+                            originalRepeat: tEntry.repeat,
+                            patternId: tEntry.patternId,
+                            patternComment: pDef.comment || "",
+                            contextComment: tEntry.comment || ""
                         });
                     }
                 }
@@ -108,7 +144,9 @@
                     block.dataset.start = e.originalStart;
                     block.dataset.duration = e.originalDuration;
                     block.dataset.repeat = e.originalRepeat;
-                    block.dataset.comment = e.originalComment;
+                    block.dataset.patternId = e.patternId || "";
+                    block.dataset.patternComment = e.patternComment || "";
+                    block.dataset.contextComment = e.contextComment || "";
 
                     patternsDiv.appendChild(block);
                     cursor = e.start + e.duration;
@@ -132,16 +170,31 @@
                 const start = pattern.dataset.start;
                 const duration = pattern.dataset.duration;
                 const repeat = pattern.dataset.repeat;
-                const comment = pattern.dataset.comment;
+                const patternId = pattern.dataset.patternId;
+                const patternComment = pattern.dataset.patternComment;
+                const contextComment = pattern.dataset.contextComment;
 
-                let html = `
+                let html = '';
+
+                // Show pattern ID if available (new format)
+                if (patternId) {
+                    html += `<div>Pattern ID: ${patternId}</div>`;
+                }
+
+                html += `
                     <div>Start: ${start}</div>
                     <div>Duration: ${duration}</div>
                     <div>Repeat: ${repeat}</div>
                 `;
 
-                if (comment) {
-                    html += `<div>Comment: ${comment}</div>`;
+                // Show pattern comment if available
+                if (patternComment) {
+                    html += `<div>Pattern: ${patternComment}</div>`;
+                }
+
+                // Show context comment if available
+                if (contextComment) {
+                    html += `<div>Context: ${contextComment}</div>`;
                 }
 
                 popover.innerHTML = html;
