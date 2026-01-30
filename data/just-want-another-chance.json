@@ -2,15 +2,9 @@
   "title": "Just Want Another Chance",
   "instruments": [
     {
-      "name": "bass",
+      "name": "kick",
       "patterns": [
-        { "start": 0, "duration": 2, "repeat": 36 }
-      ]
-    },
-    {
-      "name": "voice",
-      "patterns": [
-        { "start": 0, "duration": 72, "repeat": 1 }
+        { "start": 56, "duration": 1, "repeat": 16 }
       ]
     },
     {
@@ -20,9 +14,15 @@
       ]
     },
     {
-      "name": "kick",
+      "name": "bass",
       "patterns": [
-        { "start": 56, "duration": 1, "repeat": 16 }
+        { "start": 0, "duration": 2, "repeat": 36 }
+      ]
+    },
+    {
+      "name": "voice",
+      "patterns": [
+        { "start": 0, "duration": 72, "repeat": 1 }
       ]
     }
   ]
