@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Return of the Grave</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     <h1>Return of the Grave</h1>
     <h2>Découvrez à quoi ressemblent les structures de morceaux de musique.</h2>
-    <ul>
-        <li><a href="rej.html">Rej</a></li>
-        <li><a href="no-ufos.html">No Ufo's</a></li>
-        <li><a href="cant-do-without-you.html">Can't Do Without You</a></li>
-    </ul>
+    <ul id="songs"></ul>
+
+    <script>
+        fetch("data/songs.json")
+            .then(res => res.json())
+            .then(songs => {
+                const list = document.getElementById("songs");
+                for (const song of songs) {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.href = `song.html?song=${song.id}`;
+                    a.textContent = song.title;
+                    li.appendChild(a);
+                    list.appendChild(li);
+                }
+            });
+    </script>
 </body>
 </html>
