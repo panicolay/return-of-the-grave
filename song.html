@@ -21,7 +21,27 @@
                 .then(res => res.json())
                 .then(data => {
                     document.title = data.title;
-                    document.getElementById("title").textContent = data.title;
+
+                    // Display title and metadata
+                    const titleEl = document.getElementById("title");
+                    titleEl.textContent = data.title;
+
+                    // Add metadata if available
+                    const metadata = [];
+                    if (data.artist) metadata.push(data.artist);
+                    if (data.project) metadata.push(data.project);
+                    if (data.bpm) metadata.push(`${data.bpm} BPM`);
+                    if (data.length) metadata.push(data.length);
+
+                    if (metadata.length > 0) {
+                        const metaEl = document.createElement("div");
+                        metaEl.style.fontSize = "0.8em";
+                        metaEl.style.color = "#666";
+                        metaEl.style.marginTop = "8px";
+                        metaEl.textContent = metadata.join(" • ");
+                        titleEl.parentNode.insertBefore(metaEl, titleEl.nextSibling);
+                    }
+
                     render(data);
                 });
         }
@@ -69,49 +89,31 @@
 
                 const events = [];
 
-                // Check if using new format (patternDefinitions + timeline) or old format (patterns)
-                if (instrument.patternDefinitions && instrument.timeline) {
-                    // New format: build a map of pattern definitions
-                    const patternMap = {};
-                    for (const pDef of instrument.patternDefinitions) {
-                        patternMap[pDef.id] = pDef;
-                    }
+                // Build a map of pattern definitions
+                const patternMap = {};
+                for (const pDef of instrument.patternDefinitions) {
+                    patternMap[pDef.id] = pDef;
+                }
 
-                    // Process timeline entries
-                    for (const tEntry of instrument.timeline) {
-                        const pDef = patternMap[tEntry.patternId];
-                        if (!pDef) continue; // Skip if pattern not found
+                // Process timeline entries
+                for (const tEntry of instrument.timeline) {
+                    const pDef = patternMap[tEntry.patternId];
+                    if (!pDef) continue; // Skip if pattern not found
 
-                        // Use timeline duration if provided, otherwise use pattern definition duration
-                        const duration = tEntry.duration !== undefined ? tEntry.duration : pDef.duration;
+                    // Use timeline duration if provided, otherwise use pattern definition duration
+                    const duration = tEntry.duration !== undefined ? tEntry.duration : pDef.duration;
 
-                        for (let i = 0; i < tEntry.repeat; i++) {
-                            events.push({
-                                start: tEntry.start + i * duration,
-                                duration: duration,
-                                originalStart: tEntry.start,
-                                originalDuration: duration,
-                                originalRepeat: tEntry.repeat,
-                                patternId: tEntry.patternId,
-                                patternComment: pDef.comment || "",
-                                contextComment: tEntry.comment || ""
-                            });
-                        }
-                    }
-                } else if (instrument.patterns) {
-                    // Old format: maintain backwards compatibility
-                    for (const p of instrument.patterns) {
-                        for (let i = 0; i < p.repeat; i++) {
-                            events.push({
-                                start: p.start + i * p.duration,
-                                duration: p.duration,
-                                originalStart: p.start,
-                                originalDuration: p.duration,
-                                originalRepeat: p.repeat,
-                                patternComment: "",
-                                contextComment: p.comment || ""
-                            });
-                        }
+                    for (let i = 0; i < tEntry.repeat; i++) {
+                        events.push({
+                            start: tEntry.start + i * duration,
+                            duration: duration,
+                            originalStart: tEntry.start,
+                            originalDuration: duration,
+                            originalRepeat: tEntry.repeat,
+                            patternId: tEntry.patternId,
+                            patternComment: pDef.comment || "",
+                            contextComment: tEntry.comment || ""
+                        });
                     }
                 }
                 events.sort((a, b) => a.start - b.start);
