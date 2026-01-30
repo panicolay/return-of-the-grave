@@ -1,5 +1,8 @@
 body {
     font-family: sans-serif;
+    padding: 24px;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 .song {
@@ -33,4 +36,38 @@ body {
 
 .silence {
     width: 80px;
+}
+
+/* Responsive layout pour grands écrans */
+@media (min-width: 800px) {
+    .song {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .instrument {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .instrument-name {
+        min-width: 100px;
+        text-align: right;
+    }
+
+    .patterns {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .pattern {
+        width: auto;
+        height: 40px;
+    }
+
+    .silence {
+        width: auto;
+        height: 40px;
+    }
 }
