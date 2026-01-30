@@ -1,0 +1,36 @@
+body {
+    font-family: sans-serif;
+}
+
+.song {
+    display: flex;
+    gap: 4px;
+}
+
+.instrument {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instrument-name {
+    font-family: monospace;
+    font-size: 12px;
+    padding: 4px;
+}
+
+.patterns {
+    display: flex;
+    flex-direction: column;
+}
+
+.pattern {
+    width: 80px;
+    background: #ccc;
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+}
+
+.silence {
+    width: 80px;
+}
