@@ -1,0 +1,6 @@
+{
+    "name": "return-of-the-grave",
+    "scripts": {
+        "build": "node build.js"
+    }
+}
