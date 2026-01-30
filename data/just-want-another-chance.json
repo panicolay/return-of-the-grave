@@ -1,0 +1,29 @@
+{
+  "name": "Just Want Another Chance"
+  "instruments": [
+    {
+      "name": "bass",
+      "patterns": [
+        { "start": 0, "duration": 2, "repeat": 36 }
+      ]
+    },
+    {
+      "name": "voice",
+      "patterns": [
+        { "start": 0, "duration": 72, "repeat": 1 }
+      ]
+    },
+    {
+      "name": "hihat",
+      "patterns": [
+        { "start": 25, "duration": 11, "repeat": 22 }
+      ]
+    },
+    {
+      "name": "kick",
+      "patterns": [
+        { "start": 28, "duration": 8, "repeat": 16 }
+      ]
+    }
+  ]
+}
