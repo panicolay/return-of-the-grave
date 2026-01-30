@@ -10,6 +10,7 @@
     <a href="index.html">← Accueil</a>
     <h1 id="title"></h1>
     <div id="song"></div>
+    <div id="popover" class="popover"></div>
 
     <script>
         const songId = new URLSearchParams(window.location.search).get("song");
@@ -71,7 +72,10 @@
                     for (let i = 0; i < p.repeat; i++) {
                         events.push({
                             start: p.start + i * p.duration,
-                            duration: p.duration
+                            duration: p.duration,
+                            originalStart: p.start,
+                            originalDuration: p.duration,
+                            originalRepeat: p.repeat
                         });
                     }
                 }
@@ -98,6 +102,12 @@
                     } else {
                         block.style.height = size;
                     }
+
+                    // Store pattern info for popover
+                    block.dataset.start = e.originalStart;
+                    block.dataset.duration = e.originalDuration;
+                    block.dataset.repeat = e.originalRepeat;
+
                     patternsDiv.appendChild(block);
                     cursor = e.start + e.duration;
                 }
@@ -107,6 +117,72 @@
             }
 
             songEl.appendChild(songDiv);
+
+            // Setup popover interactions
+            setupPopover(isDesktop);
+        }
+
+        function setupPopover(isDesktop) {
+            const popover = document.getElementById("popover");
+            const patterns = document.querySelectorAll(".pattern");
+
+            function showPopover(pattern, event) {
+                const start = pattern.dataset.start;
+                const duration = pattern.dataset.duration;
+                const repeat = pattern.dataset.repeat;
+
+                popover.innerHTML = `
+                    <div>Start: ${start}</div>
+                    <div>Duration: ${duration}</div>
+                    <div>Repeat: ${repeat}</div>
+                `;
+                popover.style.display = "block";
+
+                if (isDesktop) {
+                    // Position near cursor (bottom-left corner with margin)
+                    popover.style.left = "16px";
+                    popover.style.bottom = "16px";
+                    popover.style.top = "auto";
+                    popover.style.right = "auto";
+                } else {
+                    // Position at bottom with full width
+                    popover.style.left = "16px";
+                    popover.style.right = "16px";
+                    popover.style.bottom = "16px";
+                    popover.style.top = "auto";
+                }
+            }
+
+            function hidePopover() {
+                popover.style.display = "none";
+            }
+
+            patterns.forEach(pattern => {
+                if (isDesktop) {
+                    // Desktop: hover
+                    pattern.addEventListener("mouseenter", (e) => showPopover(pattern, e));
+                    pattern.addEventListener("mouseleave", hidePopover);
+                } else {
+                    // Mobile: tap
+                    pattern.addEventListener("click", (e) => {
+                        e.stopPropagation();
+                        if (popover.style.display === "block") {
+                            hidePopover();
+                        } else {
+                            showPopover(pattern, e);
+                        }
+                    });
+                }
+            });
+
+            // Close popover when clicking outside on mobile
+            if (!isDesktop) {
+                document.addEventListener("click", (e) => {
+                    if (!e.target.classList.contains("pattern")) {
+                        hidePopover();
+                    }
+                });
+            }
         }
     </script>
 </body>

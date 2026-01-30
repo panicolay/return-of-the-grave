@@ -38,6 +38,26 @@ body {
     width: 80px;
 }
 
+.popover {
+    display: none;
+    position: fixed;
+    background: white;
+    border: 1px solid black;
+    padding: 8px 12px;
+    font-family: monospace;
+    font-size: 13px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.popover div {
+    margin: 2px 0;
+}
+
+.pattern {
+    cursor: pointer;
+}
+
 /* Responsive layout pour grands écrans */
 @media (min-width: 800px) {
     .song {
