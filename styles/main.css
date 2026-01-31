@@ -23,6 +23,7 @@ body > a:first-child {
 
 .song {
     display: flex;
+    gap: 1px;
 }
 
 .instrument {
@@ -89,6 +90,11 @@ body > a:first-child {
         align-items: flex-start;
         gap: 8px;
         flex-shrink: 0;
+        margin-bottom: 1px;
+    }
+
+    .song {
+        gap: 0;
     }
 
     .instrument-name {

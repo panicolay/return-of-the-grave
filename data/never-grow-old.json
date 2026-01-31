@@ -4,7 +4,7 @@
   "length": "2:56",
   "instruments": [
     {
-      "name": "kick",
+      "name": "KCK",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "name": "hihat",
+      "name": "HHT",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
@@ -25,7 +25,7 @@
       ]
     },
         {
-      "name": "shaker",
+      "name": "SHK",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "name": "clap",
+      "name": "CLP",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "name": "snare",
+      "name": "SNR",
       "patternDefinitions": [
         { "id": "A", "duration": 1 },
         { "id": "B", "duration": 1 }
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "name": "bass I",
+      "name": "BS1",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "name": "bass II",
+      "name": "BS2",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "name": "stab",
+      "name": "STB",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "name": "pluck",
+      "name": "PLK",
       "patternDefinitions": [
         { "id": "A", "duration": 2 }
       ],
@@ -94,7 +94,7 @@
       ]
     },
     {
-      "name": "voice",
+      "name": "VOX",
       "patternDefinitions": [
         { "id": "cutted I", "duration": 1 },
         { "id": "B", "duration": 1 },
