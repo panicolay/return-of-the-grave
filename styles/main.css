@@ -1,6 +1,5 @@
 html, body {
     margin: 0;
-    height: 100%;
 }
 
 body {
@@ -24,7 +23,6 @@ body > a:first-child {
 
 .song {
     display: flex;
-    overflow-x: auto;
 }
 
 .instrument {
@@ -38,7 +36,7 @@ body > a:first-child {
     font-family: monospace;
     font-size: 12px;
     padding: 4px;
-    max-width: 40px;
+    max-width: 24px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -50,16 +48,18 @@ body > a:first-child {
 }
 
 .pattern {
-    width: 40px;
+    width: 24px;
     background: #ccc;
-    border-bottom: 1px solid white;
-    border-right: 1px solid white;
     box-sizing: border-box;
     cursor: pointer;
 }
 
+.pattern.timeline-start {
+    border-top: 1px solid white;
+}
+
 .silence {
-    width: 40px;
+    width: 24px;
 }
 
 .popover {
@@ -82,8 +82,6 @@ body > a:first-child {
 @media (min-width: 800px) {
     .song {
         flex-direction: column;
-        overflow-x: visible;
-        overflow-y: auto;
     }
 
     .instrument {
@@ -107,6 +105,11 @@ body > a:first-child {
     .pattern {
         width: auto;
         height: 40px;
+    }
+
+    .pattern.timeline-start {
+        border-top: none;
+        border-left: 1px solid white;
     }
 
     .silence {

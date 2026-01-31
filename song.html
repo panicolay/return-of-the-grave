@@ -113,6 +113,7 @@
                         events.push({
                             start: tEntry.start + i * duration,
                             duration: duration,
+                            isTimelineStart: i === 0,
                             originalStart: tEntry.start,
                             originalDuration: duration,
                             originalRepeat: tEntry.repeat,
@@ -138,7 +139,7 @@
                         patternsDiv.appendChild(silence);
                     }
                     const block = document.createElement("div");
-                    block.className = "pattern";
+                    block.className = "pattern" + (e.isTimelineStart ? " timeline-start" : "");
                     const size = e.duration * pxPerUnit + "px";
                     if (isDesktop) {
                         block.style.width = size;
