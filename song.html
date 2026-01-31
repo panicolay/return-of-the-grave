@@ -74,7 +74,7 @@
             } else {
                 // Vertical mode: use available height
                 const instrumentNameHeight = 28; // font-size 12px + padding 4px*2 + margin
-                const availableHeight = window.innerHeight - songEl.getBoundingClientRect().top - 24 - instrumentNameHeight;
+                const availableHeight = window.innerHeight - songEl.getBoundingClientRect().top - instrumentNameHeight;
                 pxPerUnit = availableHeight / totalDuration;
             }
 
