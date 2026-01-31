@@ -23,7 +23,7 @@ body > a:first-child {
 
 .song {
     display: flex;
-    gap: 0;
+    gap: 1px;
 }
 
 .instrument {
