@@ -1,23 +1,37 @@
 html, body {
     margin: 0;
-    overflow: hidden;
     height: 100%;
 }
 
 body {
     font-family: sans-serif;
-    padding: 24px;
     box-sizing: border-box;
+}
+
+h1, #song, body > a, body > ul, body > div {
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+h1 {
+    margin-top: 24px;
+}
+
+body > a:first-child {
+    display: inline-block;
+    margin-top: 24px;
 }
 
 .song {
     display: flex;
+    overflow-x: auto;
 }
 
 .instrument {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .instrument-name {
@@ -41,6 +55,7 @@ body {
     border-bottom: 1px solid white;
     border-right: 1px solid white;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .silence {
@@ -63,20 +78,19 @@ body {
     margin: 2px 0;
 }
 
-.pattern {
-    cursor: pointer;
-}
-
 /* Responsive layout pour grands écrans */
 @media (min-width: 800px) {
     .song {
         flex-direction: column;
+        overflow-x: visible;
+        overflow-y: auto;
     }
 
     .instrument {
         flex-direction: row;
         align-items: flex-start;
         gap: 8px;
+        flex-shrink: 0;
     }
 
     .instrument-name {
