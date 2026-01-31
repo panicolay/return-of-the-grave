@@ -36,7 +36,6 @@ body > a:first-child {
 .instrument-name {
     font-family: monospace;
     font-size: 12px;
-    padding: 4px;
     max-width: 24px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -56,7 +55,7 @@ body > a:first-child {
 }
 
 .pattern.active {
-    background: #aaa;
+    background: black;
 }
 
 .pattern.timeline-start {
