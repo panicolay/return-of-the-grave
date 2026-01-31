@@ -154,6 +154,7 @@
                     block.dataset.patternId = e.patternId || "";
                     block.dataset.patternComment = e.patternComment || "";
                     block.dataset.contextComment = e.contextComment || "";
+                    block.dataset.timelineKey = instrument.name + ":" + e.originalStart + ":" + e.patternId;
 
                     patternsDiv.appendChild(block);
                     cursor = e.start + e.duration;
@@ -173,7 +174,18 @@
             const popover = document.getElementById("popover");
             const patterns = document.querySelectorAll(".pattern");
 
+            function highlightTimeline(key) {
+                document.querySelectorAll(`.pattern[data-timeline-key="${key}"]`).forEach(el => el.classList.add("active"));
+            }
+
+            function clearHighlight() {
+                document.querySelectorAll(".pattern.active").forEach(el => el.classList.remove("active"));
+            }
+
             function showPopover(pattern, event) {
+                clearHighlight();
+                highlightTimeline(pattern.dataset.timelineKey);
+
                 const start = pattern.dataset.start;
                 const duration = pattern.dataset.duration;
                 const repeat = pattern.dataset.repeat;
@@ -182,24 +194,17 @@
                 const contextComment = pattern.dataset.contextComment;
 
                 let html = '';
-
-                // Show pattern ID if available (new format)
                 if (patternId) {
                     html += `<div>Pattern ID: ${patternId}</div>`;
                 }
-
                 html += `
                     <div>Start: ${start}</div>
                     <div>Duration: ${duration}</div>
                     <div>Repeat: ${repeat}</div>
                 `;
-
-                // Show pattern comment if available
                 if (patternComment) {
                     html += `<div>Pattern: ${patternComment}</div>`;
                 }
-
-                // Show context comment if available
                 if (contextComment) {
                     html += `<div>Context: ${contextComment}</div>`;
                 }
@@ -208,13 +213,11 @@
                 popover.style.display = "block";
 
                 if (isDesktop) {
-                    // Position near cursor (bottom-left corner with margin)
                     popover.style.left = "16px";
                     popover.style.bottom = "16px";
                     popover.style.top = "auto";
                     popover.style.right = "auto";
                 } else {
-                    // Position at bottom with full width
                     popover.style.left = "16px";
                     popover.style.right = "16px";
                     popover.style.bottom = "16px";
@@ -224,18 +227,17 @@
 
             function hidePopover() {
                 popover.style.display = "none";
+                clearHighlight();
             }
 
             patterns.forEach(pattern => {
                 if (isDesktop) {
-                    // Desktop: hover
                     pattern.addEventListener("mouseenter", (e) => showPopover(pattern, e));
                     pattern.addEventListener("mouseleave", hidePopover);
                 } else {
-                    // Mobile: tap
                     pattern.addEventListener("click", (e) => {
                         e.stopPropagation();
-                        if (popover.style.display === "block") {
+                        if (popover.style.display === "block" && pattern.classList.contains("active")) {
                             hidePopover();
                         } else {
                             showPopover(pattern, e);
@@ -244,7 +246,6 @@
                 }
             });
 
-            // Close popover when clicking outside on mobile
             if (!isDesktop) {
                 document.addEventListener("click", (e) => {
                     if (!e.target.classList.contains("pattern")) {
