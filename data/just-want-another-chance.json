@@ -5,7 +5,7 @@
   "length": "2:24",
   "instruments": [
     {
-      "name": "kick",
+      "name": "KCK",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "name": "hihat",
+      "name": "HHT",
       "patternDefinitions": [
         { "id": "A", "duration": 1 }
       ],
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "name": "bass",
+      "name": "BAS",
       "patternDefinitions": [
         { "id": "A", "duration": 2 }
       ],
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "name": "voice",
+      "name": "VOX",
       "patternDefinitions": [
         { "id": "A", "duration": 72 }
       ],

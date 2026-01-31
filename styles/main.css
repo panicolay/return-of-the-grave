@@ -23,6 +23,7 @@ body > a:first-child {
 
 .song {
     display: flex;
+    gap: 0;
 }
 
 .instrument {
@@ -52,6 +53,10 @@ body > a:first-child {
     background: #ccc;
     box-sizing: border-box;
     cursor: pointer;
+}
+
+.pattern.active {
+    background: #aaa;
 }
 
 .pattern.timeline-start {
@@ -89,6 +94,11 @@ body > a:first-child {
         align-items: flex-start;
         gap: 8px;
         flex-shrink: 0;
+        margin-bottom: 1px;
+    }
+
+    .song {
+        gap: 0;
     }
 
     .instrument-name {
