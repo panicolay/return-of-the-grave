@@ -15,4 +15,4 @@
 
 ## Format des morceaux
 
-Voir fichiers existants dans `data/` pour la structure exacte. Champs niveau morceau : title (requis), artist, project, bpm, length (optionnels). Chaque instrument a des patternDefinitions (id, duration, comment) et une timeline (patternId, start, repeat, duration optionnelle, comment).
+Voir `data/CLAUDE.md` pour le schéma JSON complet.
