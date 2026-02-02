@@ -10,9 +10,5 @@
 
 ## Architecture
 
-- `data/` : un JSON par morceau → `build.js` → `songs.json` (auto-généré, ne pas modifier)
+- `data/` : un JSON par morceau → `build.js` → `songs.json` (ne pas modifier). Voir `data/CLAUDE.md`.
 - `song.html` : template (`?song=id`), `index.html` : accueil, `styles/main.css` : styles
-
-## Format des morceaux
-
-Voir `data/CLAUDE.md` pour le schéma JSON complet.
